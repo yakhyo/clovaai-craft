@@ -1,2 +1,2 @@
 cd ./weights
-wget -O file https://drive.google.com/open?id=1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ
+wget -O file https://github.com/yakhyo/CRAFT-pt/blob/master/weights/craft_mlt_25k.pth
