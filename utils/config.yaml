@@ -1,4 +1,4 @@
-trained_model: 'weights/craft_mlt_25k.pth'                  # pretrained model
+trained_model: 'weights/craft_mlt_25k.pth'          # pretrained model
 text_threshold: 0.7                                 # text confidence threshold
 low_text: 0.4                                       # text low-bound score
 link_threshold: 0.4                                 # link confidence threshold
