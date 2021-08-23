@@ -1,6 +1,5 @@
 import os
 import time
-import argparse
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -9,7 +8,7 @@ import cv2
 import numpy as np
 from utils import craft_utils, file_utils, imgproc
 
-from nets.nn import CRAFT
+from nets.nn import CRAFT, RefineNet
 import yaml
 from collections import OrderedDict
 
@@ -115,7 +114,6 @@ if __name__ == '__main__':
     # LinkRefiner
     refine_net = None
     if args['refine']:
-        from refinenet import RefineNet
 
         refine_net = RefineNet()
         print('Loading weights of refiner from checkpoint (' + args['refiner_model'] + ')')
@@ -136,7 +134,8 @@ if __name__ == '__main__':
         print("Test image {:d}/{:d}: {:s}".format(k + 1, len(image_list), image_path), end='\r')
         image = imgproc.loadImage(image_path)
 
-        bboxes, polys, score_text = test_net(net, image, args['text_threshold'], args['link_threshold'], args['low_text'],
+        bboxes, polys, score_text = test_net(net, image, args['text_threshold'], args['link_threshold'],
+                                             args['low_text'],
                                              args['cuda'], args['poly'], refine_net)
 
         # save score text
