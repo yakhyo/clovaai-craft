@@ -4,7 +4,6 @@ import argparse
 
 import torch
 import torch.backends.cudnn as cudnn
-from torch.autograd import Variable
 
 import cv2
 import numpy as np
@@ -54,7 +53,7 @@ def test_net(net, image, text_threshold, link_threshold, low_text, cuda, poly, r
     # preprocessing
     x = imgproc.normalizeMeanVariance(img_resized)
     x = torch.from_numpy(x).permute(2, 0, 1)  # [h, w, c] to [c, h, w]
-    x = Variable(x.unsqueeze(0))  # [c, h, w] to [b, c, h, w]
+    x = x.unsqueeze(0)  # [c, h, w] to [b, c, h, w]
     if cuda:
         x = x.cuda()
 
